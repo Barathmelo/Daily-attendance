@@ -7,9 +7,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
-  schedule:
-  # Runs on 12 UTC everyday
-    - cron: 0 12 * * *
+
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -27,10 +25,5 @@ jobs:
         run: |
           sudo -E apt-get -yqq update
           sudo -E apt-get -yqq install python3
-      - name: Daily Check
-        env: 
-          ACCOUNT: ${{ secrets.ACCOUNT }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-        run: |
-          python3 check.py ${ACCOUNT} ${PASSWORD}
+
 
